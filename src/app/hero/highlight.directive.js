@@ -9,18 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.subtitle = '(v3)';
+// Same directive name and selector as
+// HighlightDirective in parent AppRootModule
+// It selects for both input boxes and  'highlight' attr
+// and it highlights in beige instead of yellow
+var HighlightDirective = (function () {
+    function HighlightDirective(el) {
+        el.nativeElement.style.backgroundColor = 'beige';
+        console.log("* Hero highlight called for " + el.nativeElement.tagName);
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            template: "\n    <app-title [subtitle]=\"subtitle\"></app-title>\n    <nav>\n      <a routerLink=\"contact\" routerLinkActive=\"active\">Contact</a>\n      <a routerLink=\"crisis\"  routerLinkActive=\"active\">Crisis Center</a>\n      <a routerLink=\"heroes\"  routerLinkActive=\"active\">Heroes</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    HighlightDirective = __decorate([
+        core_1.Directive({ selector: '[highlight]' }), 
+        __metadata('design:paramtypes', [core_1.ElementRef])
+    ], HighlightDirective);
+    return HighlightDirective;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.HighlightDirective = HighlightDirective;
+//# sourceMappingURL=highlight.directive.js.map
