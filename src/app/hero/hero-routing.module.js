@@ -9,25 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-var forms_1 = require('@angular/forms');
-var awesome_pipe_1 = require('./awesome.pipe');
-var contact_component_1 = require('./contact.component');
-var contact_service_1 = require('./contact.service');
-var highlight_directive_1 = require('./highlight.directive');
-var ContactModule = (function () {
-    function ContactModule() {
+var router_1 = require('@angular/router');
+var hero_component_1 = require('./hero.component');
+var hero_list_component_1 = require('./hero-list.component');
+var hero_detail_component_1 = require('./hero-detail.component');
+var routes = [
+    { path: '',
+        component: hero_component_1.HeroComponent,
+        children: [
+            { path: '', component: hero_list_component_1.HeroListComponent },
+            { path: ':id', component: hero_detail_component_1.HeroDetailComponent }
+        ]
     }
-    ContactModule = __decorate([
+];
+var HeroRoutingModule = (function () {
+    function HeroRoutingModule() {
+    }
+    HeroRoutingModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, forms_1.FormsModule],
-            declarations: [contact_component_1.ContactComponent, highlight_directive_1.HighlightDirective, awesome_pipe_1.AwesomePipe],
-            exports: [contact_component_1.ContactComponent],
-            providers: [contact_service_1.ContactService]
+            imports: [router_1.RouterModule.forChild(routes)],
+            exports: [router_1.RouterModule]
         }), 
         __metadata('design:paramtypes', [])
-    ], ContactModule);
-    return ContactModule;
+    ], HeroRoutingModule);
+    return HeroRoutingModule;
 }());
-exports.ContactModule = ContactModule;
-//# sourceMappingURL=contact.module.js.map
+exports.HeroRoutingModule = HeroRoutingModule;
+//# sourceMappingURL=hero-routing.module.js.map

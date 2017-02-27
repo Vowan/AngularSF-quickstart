@@ -9,18 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.subtitle = '(v3)';
+var hero_service_1 = require('./hero.service');
+var user_service_1 = require('../user.service');
+var HeroComponent = (function () {
+    function HeroComponent(userService) {
+        this.userName = '';
+        this.userName = userService.userName;
     }
-    AppComponent = __decorate([
+    HeroComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n    <app-title [subtitle]=\"subtitle\"></app-title>\n    <nav>\n      <a routerLink=\"contact\" routerLinkActive=\"active\">Contact</a>\n      <a routerLink=\"crisis\"  routerLinkActive=\"active\">Crisis Center</a>\n      <a routerLink=\"heroes\"  routerLinkActive=\"active\">Heroes</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
+            template: "\n    <h2>Heroes of {{userName}}</h2>\n    <router-outlet></router-outlet>\n  ",
+            providers: [hero_service_1.HeroService]
         }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+        __metadata('design:paramtypes', [user_service_1.UserService])
+    ], HeroComponent);
+    return HeroComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.HeroComponent = HeroComponent;
+//# sourceMappingURL=hero.component.js.map
